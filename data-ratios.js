@@ -1,0 +1,66 @@
+/* Master ratios — once these are in your head you can improvise 80% of drinks */
+const RATIOS = [
+  {
+    name: "The Sour",
+    formula: "2 : 0.75 : 0.75",
+    breakdown: "2 oz spirit · 0.75 oz citrus · 0.75 oz sweetener",
+    examples: ["Daiquiri (rum · lime · simple)", "Whiskey Sour (bourbon · lemon · simple)", "Margarita (tequila · lime · Cointreau)", "Gimlet (gin · lime · simple)", "Sidecar (cognac · lemon · Cointreau)"],
+    tip: "The most important ratio in bartending. Memorize it. Swap the spirit and citrus and you've made hundreds of different drinks.",
+  },
+  {
+    name: "The Old Fashioned",
+    formula: "2 : 0.25 : dashes",
+    breakdown: "2 oz spirit · 0.25 oz sweetener · 2-3 dashes bitters",
+    examples: ["Old Fashioned (bourbon · simple · Angostura)", "Sazerac (rye · simple · Peychaud's)", "Oaxaca Old Fashioned (mezcal · agave · Angostura)"],
+    tip: "Spirit-forward template. Minimal dilution, let the booze shine.",
+  },
+  {
+    name: "The Martini / Manhattan",
+    formula: "2.5 : 0.5 – 2 : 1",
+    breakdown: "Spirit-heavy to equal-ish, no citrus, stirred",
+    examples: ["Martini (2.5 gin : 0.5 dry vermouth)", "Manhattan (2 rye : 1 sweet vermouth)", "Rob Roy (2 Scotch : 1 sweet vermouth)", "Martinez (2 gin : 1 sweet vermouth : splash maraschino)"],
+    tip: "All-spirit + vermouth = stirred. Ratio shifts from very dry (more spirit) to wet (more vermouth) based on guest preference.",
+  },
+  {
+    name: "Equal Parts",
+    formula: "1 : 1 : 1",
+    breakdown: "Three ingredients, equal pours",
+    examples: ["Negroni (gin · Campari · sweet vermouth)", "Boulevardier (bourbon · Campari · sweet vermouth)", "Last Word (gin · Chartreuse · maraschino · lime)", "Paper Plane (bourbon · Aperol · Nonino · lemon)"],
+    tip: "Easy to remember, hard to mess up. When in doubt on a new equal-parts drink, just jigger three of the same size.",
+  },
+  {
+    name: "The Highball",
+    formula: "2 : top",
+    breakdown: "2 oz spirit · top with mixer",
+    examples: ["Gin & Tonic", "Vodka Soda", "Whiskey Ginger", "Jack & Coke", "Paloma", "Rum & Coke"],
+    tip: "Ice first, spirit second, mixer last. Keeps carbonation lively and ensures you hit the pour.",
+  },
+  {
+    name: "The Collins / Fizz",
+    formula: "2 : 1 : 0.5 : top",
+    breakdown: "2 oz spirit · 1 oz citrus · 0.5 oz simple · top with soda",
+    examples: ["Tom Collins (gin)", "John Collins (bourbon)", "Vodka Collins", "Gin Fizz (shaken, less soda)"],
+    tip: "Basically a sour lengthened with soda. Shake the first three, THEN top with soda in the glass.",
+  },
+  {
+    name: "The Mule / Buck",
+    formula: "2 : 0.5 : top",
+    breakdown: "2 oz spirit · 0.5 oz lime · top with ginger beer",
+    examples: ["Moscow Mule (vodka)", "Kentucky Mule (bourbon)", "Mexican Mule (tequila)", "Dark 'n' Stormy (dark rum, usually no lime)"],
+    tip: "Spicy ginger beer (not sweet ginger ale) is non-negotiable.",
+  },
+  {
+    name: "The Spritz",
+    formula: "3 : 2 : 1",
+    breakdown: "3 oz prosecco · 2 oz bitter liqueur · 1 oz soda (splash)",
+    examples: ["Aperol Spritz", "Campari Spritz", "Hugo Spritz (elderflower)", "St-Germain Spritz"],
+    tip: "Wine glass, big ice, built in that order. Low-ABV, aperitif, perfect for day drinking.",
+  },
+  {
+    name: "The Daisy",
+    formula: "2 : 0.75 : 0.5 : 0.25",
+    breakdown: "2 oz spirit · 0.75 oz citrus · 0.5 oz liqueur · 0.25 oz syrup (or skip)",
+    examples: ["Margarita variants", "Jack Rose", "Ward Eight"],
+    tip: "A sour with an added liqueur modifier. Layer of complexity on top of the basic sour template.",
+  },
+];

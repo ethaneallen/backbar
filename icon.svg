@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#0b0b0f"/>
+  <g transform="translate(256 256)">
+    <!-- martini glass -->
+    <path d="M -140 -80 L 140 -80 L 10 60 L 10 140 L 70 140 L 70 165 L -70 165 L -70 140 L -10 140 L -10 60 Z"
+          fill="none" stroke="#d4a24c" stroke-width="16" stroke-linejoin="round"/>
+    <!-- olive -->
+    <circle cx="30" cy="-30" r="14" fill="#7bc47f"/>
+    <circle cx="34" cy="-34" r="4" fill="#e8b964"/>
+    <!-- pick -->
+    <line x1="30" y1="-30" x2="110" y2="-110" stroke="#e8b964" stroke-width="4"/>
+  </g>
+</svg>

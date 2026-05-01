@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-accent="gold">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0b0f" />
+  <title>Backbar — Bartender's Pocket Guide</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="icon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <button class="menu-btn" id="menu-btn" aria-label="Menu">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <span class="logo">🍸</span>
+      <span class="title">Backbar</span>
+      <div class="header-actions">
+        <button class="icon-btn" id="shift-btn" title="Shift mode" aria-label="Shift mode">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 2v4M12 18v4M4 12H2M22 12h-2M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+        </button>
+        <button class="icon-btn" id="theme-btn" title="Theme" aria-label="Theme">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Drawer navigation -->
+  <div class="drawer-backdrop" id="drawer-backdrop"></div>
+  <nav class="drawer" id="drawer">
+    <div class="drawer-header">
+      <span class="logo">🍸</span>
+      <span class="drawer-title">Backbar</span>
+    </div>
+    <div class="drawer-section">
+      <div class="drawer-label">Learn</div>
+      <button class="drawer-item active" data-view="browse"><span class="di-icon">📖</span>Browse Drinks</button>
+      <button class="drawer-item" data-view="quiz"><span class="di-icon">🎯</span>Quiz (Spaced Repetition)</button>
+      <button class="drawer-item" data-view="speed"><span class="di-icon">⚡</span>Speed Drill</button>
+      <button class="drawer-item" data-view="ratios"><span class="di-icon">📐</span>Ratio Trainer</button>
+      <button class="drawer-item" data-view="progress"><span class="di-icon">📈</span>My Progress</button>
+    </div>
+    <div class="drawer-section">
+      <div class="drawer-label">Behind the Bar</div>
+      <button class="drawer-item" data-view="whatcan"><span class="di-icon">🧪</span>What Can I Make?</button>
+      <button class="drawer-item" data-view="flavor"><span class="di-icon">👅</span>Flavor Finder</button>
+      <button class="drawer-item" data-view="shift"><span class="di-icon">🔦</span>Shift Mode</button>
+    </div>
+    <div class="drawer-section">
+      <div class="drawer-label">Reference</div>
+      <button class="drawer-item" data-view="spirits"><span class="di-icon">🥃</span>Spirits 101</button>
+      <button class="drawer-item" data-view="glassware"><span class="di-icon">🍷</span>Glassware Guide</button>
+      <button class="drawer-item" data-view="garnish"><span class="di-icon">🍋</span>Garnish Prep</button>
+      <button class="drawer-item" data-view="techniques"><span class="di-icon">🛠️</span>Techniques</button>
+      <button class="drawer-item" data-view="mistakes"><span class="di-icon">⚠️</span>Mistakes to Avoid</button>
+      <button class="drawer-item" data-view="winebeer"><span class="di-icon">🍺</span>Wine & Beer</button>
+      <button class="drawer-item" data-view="service"><span class="di-icon">💬</span>Service Scripts</button>
+    </div>
+    <div class="drawer-section">
+      <div class="drawer-label">Settings</div>
+      <button class="drawer-item" data-view="settings"><span class="di-icon">⚙️</span>Settings</button>
+    </div>
+  </nav>
+
+  <main id="main">
+    <!-- Browse -->
+    <section class="view active" id="view-browse">
+      <h1 class="view-title">Browse Drinks</h1>
+      <div class="search-wrap">
+        <input id="search" type="search" placeholder="Search drinks, spirits, or ingredients…" autocomplete="off" spellcheck="false" />
+      </div>
+      <div class="chip-row" id="category-chips"></div>
+      <div class="drink-grid" id="drink-grid"></div>
+      <p class="empty" id="empty-state" hidden>No drinks match that search.</p>
+    </section>
+
+    <!-- Quiz -->
+    <section class="view" id="view-quiz">
+      <h1 class="view-title">Quiz — Spaced Repetition</h1>
+      <p class="view-subtitle">Missed drinks come back sooner. Mastered ones fade away.</p>
+      <div class="quiz-controls">
+        <div class="quiz-modes">
+          <button class="mode active" data-mode="ingredients">Name → Recipe</button>
+          <button class="mode" data-mode="guess">Recipe → Name</button>
+        </div>
+        <select id="quiz-scope">
+          <option value="all">All drinks</option>
+        </select>
+      </div>
+      <div id="quiz-card" class="quiz-card"></div>
+      <div class="quiz-stats" id="quiz-stats"></div>
+    </section>
+
+    <!-- Speed Drill -->
+    <section class="view" id="view-speed">
+      <h1 class="view-title">Speed Drill</h1>
+      <p class="view-subtitle">Timed recall builds shift-speed reflexes.</p>
+      <div id="speed-body"></div>
+    </section>
+
+    <!-- Ratio Trainer -->
+    <section class="view" id="view-ratios">
+      <h1 class="view-title">Ratio Trainer</h1>
+      <p class="view-subtitle">Learn templates, not recipes. Master these and you can improvise.</p>
+      <div id="ratios-body"></div>
+    </section>
+
+    <!-- Progress -->
+    <section class="view" id="view-progress">
+      <h1 class="view-title">My Progress</h1>
+      <div id="progress-body"></div>
+    </section>
+
+    <!-- What Can I Make -->
+    <section class="view" id="view-whatcan">
+      <h1 class="view-title">What Can I Make?</h1>
+      <p class="view-subtitle">Tap what you have. We'll show you what you can pour.</p>
+      <div id="whatcan-body"></div>
+    </section>
+
+    <!-- Flavor Finder -->
+    <section class="view" id="view-flavor">
+      <h1 class="view-title">Flavor Finder</h1>
+      <p class="view-subtitle">Guest says "something citrusy, not too sweet"? Start here.</p>
+      <div id="flavor-body"></div>
+    </section>
+
+    <!-- Shift Mode -->
+    <section class="view" id="view-shift">
+      <h1 class="view-title">Shift Mode</h1>
+      <p class="view-subtitle">Big text. High contrast. One-tap lookup. Built for when you're in the weeds.</p>
+      <div id="shift-body"></div>
+    </section>
+
+    <!-- Spirits 101 -->
+    <section class="view" id="view-spirits">
+      <h1 class="view-title">Spirits 101</h1>
+      <div id="spirits-body"></div>
+    </section>
+
+    <!-- Glassware -->
+    <section class="view" id="view-glassware">
+      <h1 class="view-title">Glassware Guide</h1>
+      <div id="glassware-body"></div>
+    </section>
+
+    <!-- Garnish -->
+    <section class="view" id="view-garnish">
+      <h1 class="view-title">Garnish Prep</h1>
+      <div id="garnish-body"></div>
+    </section>
+
+    <!-- Techniques -->
+    <section class="view" id="view-techniques">
+      <h1 class="view-title">Techniques</h1>
+      <div id="techniques-list"></div>
+    </section>
+
+    <!-- Mistakes -->
+    <section class="view" id="view-mistakes">
+      <h1 class="view-title">Mistakes to Avoid</h1>
+      <p class="view-subtitle">Every new bartender makes these. Skip the learning curve.</p>
+      <div id="mistakes-body"></div>
+    </section>
+
+    <!-- Wine & Beer -->
+    <section class="view" id="view-winebeer">
+      <h1 class="view-title">Wine & Beer</h1>
+      <div id="winebeer-body"></div>
+    </section>
+
+    <!-- Service Scripts -->
+    <section class="view" id="view-service">
+      <h1 class="view-title">Service Scripts</h1>
+      <p class="view-subtitle">Real situations. Real lines. Copy them until they're yours.</p>
+      <div id="service-body"></div>
+    </section>
+
+    <!-- Settings -->
+    <section class="view" id="view-settings">
+      <h1 class="view-title">Settings</h1>
+      <div id="settings-body"></div>
+    </section>
+
+    <!-- Drink detail modal -->
+    <div class="modal" id="detail-modal" hidden>
+      <div class="modal-backdrop" data-close="1"></div>
+      <div class="modal-sheet" role="dialog" aria-modal="true">
+        <button class="modal-close" data-close="1" aria-label="Close">×</button>
+        <div id="detail-content"></div>
+      </div>
+    </div>
+  </main>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="drinks.js"></script>
+  <script src="data-extend.js"></script>
+  <script src="data-spirits.js"></script>
+  <script src="data-glassware.js"></script>
+  <script src="data-garnish.js"></script>
+  <script src="data-mistakes.js"></script>
+  <script src="data-ratios.js"></script>
+  <script src="data-wine-beer.js"></script>
+  <script src="data-service.js"></script>
+  <script src="app.js"></script>
+  <script src="view-browse.js"></script>
+  <script src="view-quiz.js"></script>
+  <script src="view-speed.js"></script>
+  <script src="view-ratios.js"></script>
+  <script src="view-progress.js"></script>
+  <script src="view-whatcan.js"></script>
+  <script src="view-flavor.js"></script>
+  <script src="view-shift.js"></script>
+  <script src="view-ref.js"></script>
+  <script src="view-settings.js"></script>
+  <script src="boot.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+    }
+  </script>
+</body>
+</html>
